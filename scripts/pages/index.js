@@ -1,28 +1,24 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+    
+async function fetchData() {
+   let res = await fetch("../../data/photographers.json")
+    return await res.json();
+}
+
+async function getPhotographers() {
+        
+   let data = await fetchData().then(async (e)=> e.photographers);
+
+       const photographers=
+           [ {
+               "name":  data.name,
+               "id":  data.id,
+               "city": data.city,
+               "country": data.country,
+               "tagline": data.tagline,
+               "price": data.price,
+               "portrait":  data.portrait,
+           }]
+    return ({photographers: [...data]})
     }
 
     async function displayData(photographers) {
@@ -31,13 +27,14 @@
         photographers.forEach((photographer) => {
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
+            photographersSection.innerHTML += userCardDOM;
         });
     };
 
     async function init() {
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
+        console.log(photographers)
         displayData(photographers);
     };
     

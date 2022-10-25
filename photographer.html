@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+	  <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
+	  <link crossorigin="anonymous" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
@@ -12,9 +15,33 @@
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+      <section class="photograph-header">
+	      <section class="text-content">
+		      <h1>Mimi Keel</h1>
+		      <h2>London, Uk</h2>
+		      <p>Voir le beau dans le quotidien</p>
+	      </section>
+	      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+	
+	      <section class="image">
+		      <img src="assets/photographers/MimiKeel.jpg" alt="">
+	      </section>
+      </section>
+	  <section class="sort">
+		    <p>Trier par</p>
+		  <section class="" id="selectlist" onclick="openSelectMenu()">
+			  <p class="">
+				  Popularité
+			  </p>
+			  <p class="">
+				  Date
+			  </p>
+			  <p class="">
+				  Titre
+			  </p>
+		  </section>
+	  </section>
+	    
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -33,5 +60,6 @@
 		</div>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/factories/photographer.js"></script>
   </body>
 </html>
